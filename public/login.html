@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="shortcut icon" href="">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+		</script>
+		<style>
+			body {
+				background-image: url("images/earth.jpg");
+				background-repeat: no-repeat;
+				background-size: 100% auto;
+				background-attachment: fixed;
+			}
+			/* .img_center {
+				max-width: 100%;
+				max-height: 100%;
+				margin: auto;
+			} */
+			.txt_center {
+				position: absolute;
+				right: 50%;
+				top: 50%;
+				z-index: 1000;
+			}
+			.btn_center {
+				position: absolute;
+				background-color: white;
+				border: none;
+				color: black;
+				padding: 4px 12px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 14px;
+			}
+			.title {
+				position: relative;
+				z-index: 1000;
+				font-size: 40px;
+				color: white;
+				font-weight: bold;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title">Where Are You?</div>
+		<div class="txt_center">
+			<form action="/cookie" method="post">
+				<input id="name" classtype="text" placeholder="Name"><br>
+				<input type="submit" value="Login">
+			</form>
+		</div>
+	</body>
+</html>
