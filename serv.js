@@ -11,22 +11,21 @@ router.get('/login', (req, res) => {
     res.sendFile("/public/login.html", { root: '.' });
 });
 
-router.post('/cookie', (req, res) => {
-    console.log("testing");
-    res.write("check");
-    res.end();
+router.post('/game', (req, res) => {
+    res.status(200);
+    res.sendFile("/public/game.html", { root: '.' });
 });
 
-router.get('/game', (req, res) => {
-    res.write("game");
-    res.end();
-});
-
-// router.use((req, res) => {
-//     res.status(404);
-//     res.redirect('/login');
+// router.get('/game', (req, res) => {
+//     res.write("game");
 //     res.end();
 // });
+
+router.use((req, res) => {
+    res.status(404);
+    res.redirect('/login');
+    res.end();
+});
 
 
 
