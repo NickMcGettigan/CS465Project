@@ -9,28 +9,21 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
-      
             const chat = io.connect('http://localhost:8080/game.html');
-            
+            const name = localStorage.getItem("name");
+
+            console.log("Connected: " + name);
             chat.on('connection', () => {
-                console.log("connected");
+                console.log("connected: " + name);
             });
             
-            // jQuery('#submit').on('click', function() {
-            // objectSocket.emit('message', {
-            //     'name': jQuery('#name').val(),
-            //     'message': jQuery('#message').val()
-            // });
-            // });
 
-            // objectSocket.on('message', function(objectData) {
-            // jQuery('#output')
-            //     .prepend(objectData.name + ': ' + objectData.message + '\n');
-            // });
-
-   
-
-
+            jQuery('#submit').on('click', function() {
+                chat.emit('message', {
+                //'name': jQuery('#name').val(),
+                'message': jQuery('#message').val()
+      });
+    });
 
 		</script>
 		<style>
@@ -60,6 +53,13 @@
                 </div>
                 <div class="col-md-6" style="background-color: blue;">
                     Hint Window
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 8px;">
+                    <input id="message" type="text" size= "86" placeholder="message">
+                    <input id="submit" type="button" value="submit">
+                        
                 </div>
             </div>
 	</body>

@@ -6,8 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript">
-
-			
+			function save_data() {
+				console.log("check");
+				localStorage.setItem("name", $('#name').val())
+			}
 		</script>
 		<style>
 			body {
@@ -16,11 +18,6 @@
 				background-size: 100% auto;
 				background-attachment: fixed;
 			}
-			/* .img_center {
-				max-width: 100%;
-				max-height: 100%;
-				margin: auto;
-			} */
 			.txt_center {
 				position: absolute;
 				right: 50%;
@@ -51,10 +48,11 @@
 	<body>
 		<div class="title">Where Are You?</div>
 		<div class="txt_center">
-			<form action="/game" method="post">
-				<input id="name" classtype="text" placeholder="Name"><br>
-				<input type="submit" value="Login">
-			</form>
+				<form onsubmit="save_data()" action="/game" method="post">
+					<input id="name" classtype="text" placeholder="Name"><br>
+					<input id="login_button" type="submit" value="Login">
+					</script>
+				</form>
 		</div>
 	</body>
 </html>
