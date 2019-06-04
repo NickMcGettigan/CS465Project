@@ -14,7 +14,10 @@ const io = socket(app.listen(8080));
 
 // Chat
 io.on('connection', function(objectSocket) { 
-    console.log("connection"); //testing
+    console.log("Connection"); //testing
+
+
+
 });
 
 

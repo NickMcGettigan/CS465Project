@@ -13,18 +13,13 @@
             const name = localStorage.getItem("name");
 
             console.log("Connected: " + name);
-            chat.on('connection', () => {
-                console.log("connected: " + name);
-            });
             
-
             jQuery('#submit').on('click', function() {
                 chat.emit('message', {
-                //'name': jQuery('#name').val(),
+                'name': jQuery('#name').val(),
                 'message': jQuery('#message').val()
-      });
-    });
-
+                });
+            });
 		</script>
 		<style>
 			
