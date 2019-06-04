@@ -6,8 +6,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
+            const chat = io.connect('http://localhost:8080/game.html');
+            const name = localStorage.getItem("name");
+
+            console.log("Connected: " + name);
+            /*
+            jQuery('#submit').on('click', function() {
+                chat.emit('message', {
+                'name': jQuery('#name').val(),
+                'message': jQuery('#message').val()
+                });
+            });*/
+/*
+            chat.on('message', function(objectData) {
+				jQuery('#output')
+					.prepend(objectData.strFrom + ' to ' + objectData.strTo + ': ' + objectData.strMessage + '\n')
+				;
+			}); */
 
 		</script>
 		<style>
@@ -17,9 +35,9 @@
 	<body>
 		<div class="container-fluid rounded shadow-sm p-3 mb-5">
 			<div class="row">
-				<div class="col-md-10" style="background-color: grey; padding-bottom: 300px">
+				<div class="col-md-10" style="background-color: grey; padding: 20px">
                     <!-- google api picture display -->
-                    Picture
+                    <img src="https://maps.googleapis.com/maps/api/streetview?size=300x300&location=51.5009153,-0.1247454&fov=90&heading=170&pitch=40&key=AIzaSyB86XBXssz8z2rfT-515uECWWeLcYVse1w" />
                 </div>
                 <div class="col-md-2" style="background-color: greenyellow;">
                     <!-- high score or connection window with points?
@@ -37,6 +55,13 @@
                 </div>
                 <div class="col-md-6" style="background-color: blue;">
                     Hint Window
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 8px;">
+                    <input id="message" type="text" size= "86" placeholder="message">
+                    <input id="submit" type="button" value="submit">
+                        
                 </div>
             </div>
 	</body>
