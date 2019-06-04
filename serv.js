@@ -15,7 +15,7 @@ const io = socket(app.listen(8080));
 // Chat
 io.on('connection', function(objectSocket) { 
     console.log("Connection"); //testing
-
+    
 
 
 });
@@ -42,3 +42,14 @@ app.use('/', router);
 
 console.log('Serving on: http://localhost:8080/login');
 //app.listen(process.env.PORT || 8080);
+
+
+/* Save Locations:
+ * Big Ben
+ * https://maps.googleapis.com/maps/api/streetview?size=300x300&location=51.5009153,-0.1247454&fov=90&heading=170&pitch=40&key=AIzaSyB86XBXssz8z2rfT-515uECWWeLcYVse1w
+ *
+ * 
+ * 
+ * 
+ * 
+ */

@@ -13,13 +13,20 @@
             const name = localStorage.getItem("name");
 
             console.log("Connected: " + name);
-            
+            /*
             jQuery('#submit').on('click', function() {
                 chat.emit('message', {
                 'name': jQuery('#name').val(),
                 'message': jQuery('#message').val()
                 });
-            });
+            });*/
+/*
+            chat.on('message', function(objectData) {
+				jQuery('#output')
+					.prepend(objectData.strFrom + ' to ' + objectData.strTo + ': ' + objectData.strMessage + '\n')
+				;
+			}); */
+
 		</script>
 		<style>
 			
@@ -28,9 +35,9 @@
 	<body>
 		<div class="container-fluid rounded shadow-sm p-3 mb-5">
 			<div class="row">
-				<div class="col-md-10" style="background-color: grey; padding-bottom: 300px">
+				<div class="col-md-10" style="background-color: grey; padding: 20px">
                     <!-- google api picture display -->
-                    Picture
+                    <img src="https://maps.googleapis.com/maps/api/streetview?size=300x300&location=51.5009153,-0.1247454&fov=90&heading=170&pitch=40&key=AIzaSyB86XBXssz8z2rfT-515uECWWeLcYVse1w" />
                 </div>
                 <div class="col-md-2" style="background-color: greenyellow;">
                     <!-- high score or connection window with points?
