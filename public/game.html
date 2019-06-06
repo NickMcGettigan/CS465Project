@@ -9,10 +9,20 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
-            const chat = io.connect('http://localhost:8080/game.html');
+            const socket = io.connect();
             const name = localStorage.getItem("name");
 
-            console.log("Connected: " + name);
+            if (socket != undefined) {
+                console.log("Connected: " + name);
+            }
+
+            socket.on('image', function(objectdata) {
+                console.log("received img update");
+                console.log(objectdata);
+                $('#picture').attr('src', objectdata.url);
+            });
+            
+
             /*
             jQuery('#submit').on('click', function() {
                 chat.emit('message', {
@@ -27,6 +37,10 @@
 				;
 			}); */
 
+
+            
+
+
 		</script>
 		<style>
 			
@@ -37,7 +51,7 @@
 			<div class="row">
 				<div class="col-md-10" style="background-color: grey; padding: 20px">
                     <!-- google api picture display -->
-                    <img src="https://maps.googleapis.com/maps/api/streetview?size=300x300&location=51.5009153,-0.1247454&fov=90&heading=170&pitch=40&key=AIzaSyB86XBXssz8z2rfT-515uECWWeLcYVse1w" />
+                    <img id="picture" src="">
                 </div>
                 <div class="col-md-2" style="background-color: greenyellow;">
                     <!-- high score or connection window with points?
