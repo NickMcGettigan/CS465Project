@@ -8,38 +8,29 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
+            
+            // Handle Socket / Chat functions
+
             const socket = io.connect();
             const name = localStorage.getItem("name");
-
             if (socket != undefined) {
                 console.log("Connected: " + name);
             }
 
+            // Replace image URL
             socket.on('image', function(objectdata) {
-                console.log("received img update");
-                console.log(objectdata);
                 $('#picture').attr('src', objectdata.url);
             });
+
+            // Receive message
+            socket.on('message', function(objectdata) {
+                console.log("received msg");
+                console.log(objectdata);
+                $('#chat')
+                    .prepend(objectdata.name + ': ' + objectdata.message + '\n');
+            });
             
-
-            /*
-            jQuery('#submit').on('click', function() {
-                chat.emit('message', {
-                'name': jQuery('#name').val(),
-                'message': jQuery('#message').val()
-                });
-            });*/
-/*
-            chat.on('message', function(objectData) {
-				jQuery('#output')
-					.prepend(objectData.strFrom + ' to ' + objectData.strTo + ': ' + objectData.strMessage + '\n')
-				;
-			}); */
-
-
-            
-
 
 		</script>
 		<style>
@@ -64,8 +55,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6" style="background-color: green; padding-bottom: 100px">
-                    Chat window
+                <div class="col-md-6" style="background-color: green; height:200px; max-height: 200px; overflow-y:scroll;">
+                    <pre id="chat" style="white-space: pre-wrap;"></pre>
                 </div>
                 <div class="col-md-6" style="background-color: blue;">
                     Hint Window
@@ -73,10 +64,25 @@
             </div>
             <div class="row">
                 <div class="col-md-12" style="margin-top: 8px;">
-                    <input id="message" type="text" size= "86" placeholder="message">
-                    <input id="submit" type="button" value="submit">
+                    <form autocomplete="off">
+                        <input id="message" type="text" size= "86" placeholder="Message">
+                        <input id="send" type="button" value="submit">
                         
+                    </form>
                 </div>
             </div>
+
+
+            <script type='text/javascript'>
+                $('#send').on('click', function() {
+                    socket.emit('message', {
+                        'name': name,
+                        'message': $('#message').val()
+                    });
+                    $('#message').val('');
+                    console.log("Message Sent");
+                });
+            </script>
+        </div>
 	</body>
 </html>
