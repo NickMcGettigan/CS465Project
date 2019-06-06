@@ -31,6 +31,7 @@
                     .prepend(objectdata.name + ': ' + objectdata.message + '\n');
             });
             
+            console.log(https://en.wikipedia.org/w/api.php?action=opensearch&search=arc_de_triomphe&limit=1&format=json);
 
 		</script>
 		<style>
@@ -55,7 +56,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6" style="background-color: green; height:200px; max-height: 200px; overflow-y:scroll;">
+                <div class="col-md-6" style="background-color: green; height:200px; max-height: 200px; overflow-y:auto;">
                     <pre id="chat" style="white-space: pre-wrap;"></pre>
                 </div>
                 <div class="col-md-6" style="background-color: blue;">
@@ -64,14 +65,10 @@
             </div>
             <div class="row">
                 <div class="col-md-12" style="margin-top: 8px;">
-                    <form autocomplete="off">
-                        <input id="message" type="text" size= "86" placeholder="Message">
-                        <input id="send" type="button" value="submit">
-                        
-                    </form>
+                    <input id="message" type="text" size= "86" placeholder="Message" autocomplete="off">
+                    <input id="send" type="button" value="submit"> 
                 </div>
             </div>
-
 
             <script type='text/javascript'>
                 $('#send').on('click', function() {
@@ -80,7 +77,16 @@
                         'message': $('#message').val()
                     });
                     $('#message').val('');
-                    console.log("Message Sent");
+                });
+
+                $('#message').on('keypress', function(event) {
+                    if (event.which == 13) {
+                        socket.emit('message', {
+                            'name': name,
+                            'message': $('#message').val()
+                        });
+                        $('#message').val('');
+                    }
                 });
             </script>
         </div>
