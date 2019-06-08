@@ -4,9 +4,16 @@ const app = express();
 const socket = require('socket.io');
 //const location = require('./location.js');
 const request = require('request');
-const fs =require("fs");
 
-const key= fileread("key.txt").toString();
+const fs =require("fs");
+const key;
+try{
+    key = fileread("key.txt").toString();
+}
+catch{
+    key = process.env.GAPI;
+}
+
 const raw_data = JSON.parse(fs.readFileSync('./location.json'));
 const url_prepend = 'https://maps.googleapis.com/maps/api/streetview?size=600x450';
 const url_append = '&key=' + key;
