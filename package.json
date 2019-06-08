@@ -3,6 +3,10 @@
     "version" : "1.0.0",
     "description" : "A location guessing web app",
     "main": "serv.js",
+    "scripts" : {
+        "test": "echo \"Error: no test specififed\" && exit 1",
+        "start": "node serv.js"
+    },
     "engines": {
         "node": ">=10.15.3",
         "npm": ">=6.9.0"
