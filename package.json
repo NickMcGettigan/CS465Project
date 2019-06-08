@@ -1,0 +1,22 @@
+{
+    "name" : "cs465sp19whereami",
+    "version" : "1.0.0",
+    "description" : "A location guessing web app",
+    "main": "serv.js",
+    "scripts" : {
+        "test": "echo \"Error: no test specififed\" && exit 1",
+        "start": "node serv.js"
+    },
+    "engines": {
+        "node": ">=10.15.3",
+        "npm": ">=6.9.0"
+    },
+    "author" : "Nelson & Nick",
+    "dependencies" : {
+        "express" : "^4.17.1",
+        "socket.io" : "^2.2.0",
+        "request" : "^2.88.0"
+    },
+    "license" : "MIT",
+    "homepage" : "https://github.com/NickMcGettigan/CS465Project#readme"
+}

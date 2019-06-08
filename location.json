@@ -1,0 +1,36 @@
+[{
+    "name": "Big Ben",
+    "alias" : "",
+    "URL": "&location=51.5009153,-0.1247454&fov=90&heading=170&pitch=40",
+    "hint": "big_ben"
+},
+{
+    "name": "Washington Monument",
+    "alias" : "",
+    "URL": "&location=38.8892703,-77.0393308&fov=40&heading=90&pitch=20",
+    "hint": "washington_monument"
+},
+{
+    "name":"Capitol Hill",
+    "alias" : "",
+    "URL":"&location=38.8896705,-77.0124246&fov=40&heading=90&pitch=10",
+    "hint":"capitol_hill"
+},
+{
+    "name":"Portland State University",
+    "alias": "PSU",
+    "URL": "&location=45.509355,-122.6815488&fov=90&heading=120&pitch=20",
+    "hint": "portland_state_university"
+},
+{
+    "name": "Arc de Triomphe",
+    "alias": "Arch de Triumph",
+    "URL":"&location=48.8739843,2.2944872&fov=100&heading=100&pitch=30",
+    "hint": "arch_de_triumph"
+},
+{
+    "name": "Sydney Opera House",
+    "alias" : "",
+    "URL" : "&location=-33.859922,151.2171313&fov=40&heading=335&pitch=2",
+    "hint" : "sydney_opera_house"
+}]
