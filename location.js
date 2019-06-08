@@ -1,4 +1,6 @@
-const request = require('request');
+/* Depricated file 
+ * had a problem with the emit waiting for this to return
+ * couldn't get the promise to work across a file
 
 
 // Read in google key
@@ -41,6 +43,7 @@ module.exports = {
 				"URL" : url_prepend + raw_data[random].URL + url_append,
 				"hint" : hint_text
 			}
+			console.log(location);
 			return location;
 		})
 		.catch((err) => {

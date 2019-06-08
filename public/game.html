@@ -20,7 +20,8 @@
 
             // Replace location data
             socket.on('location', function(objectdata) {
-                $('#picture').attr('src', objectdata.url);
+                $('#picture').attr('src', objectdata.URL);
+                $('#hint_window').text(objectdata.hint);
             });
 
             // Receive message
@@ -41,9 +42,18 @@
 	<body>
 		<div class="container-fluid rounded shadow-sm p-3 mb-5">
 			<div class="row">
-				<div class="col-md-10" style="background-color: grey; padding: 20px">
+				<div class="col-md-6" style="background-color: grey; padding: 20px">
                     <!-- google api picture display -->
                     <img id="picture" src="">
+                </div>
+                <div class="col-md-6" style="background-color: blue;">
+                    <p id="hint_window">Hint</p>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-10" style="background-color: green; height:200px; max-height: 200px; overflow-y:auto;">
+                    <pre id="chat" style="white-space: pre-wrap;"></pre>
                 </div>
                 <div class="col-md-2" style="background-color: greenyellow;">
                     <!-- high score or connection window with points?
@@ -53,14 +63,6 @@
                         Nick:     50 <br>
                         Cat:       1 <br>
                     </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6" style="background-color: green; height:200px; max-height: 200px; overflow-y:auto;">
-                    <pre id="chat" style="white-space: pre-wrap;"></pre>
-                </div>
-                <div class="col-md-6" style="background-color: blue;">
-                    Hint Window
                 </div>
             </div>
             <div class="row">
