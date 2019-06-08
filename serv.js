@@ -6,7 +6,7 @@ const socket = require('socket.io');
 const request = require('request');
 
 const fs =require("fs");
-const key;
+let key;
 try{
     key = fileread("key.txt").toString();
 }
