@@ -20,7 +20,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
-let io = socket(app.listen(8080));
+let io = socket(app.listen(process.env.PORT || 8080));
 console.log('Serving on: http://localhost:8080/login');
 
 
