@@ -43,7 +43,6 @@ let location = {
 };
 let newImgCounter = setInterval(function() {
     counter--;
-    console.log(counter);
     //console.log('Counter: ' + counter);
     if (counter <= 0) {
         var max=(Object.keys(raw_data).length); // max location # + 1  
@@ -67,7 +66,7 @@ let newImgCounter = setInterval(function() {
 				"URL" : url_prepend + raw_data[random].URL + url_append,
 				"hint" : hint_text
 			}
-			console.log(location);
+			//console.log(location);
             counter = new_Image_Timer;
             winner = false;
             io.sockets.emit('location', {
