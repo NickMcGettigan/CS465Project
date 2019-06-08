@@ -12,8 +12,9 @@ const url_prepend = 'https://maps.googleapis.com/maps/api/streetview?size=600x45
 const url_append = '&key=' + key;
 const hint_prepend = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=';
 const hint_append = '&limit=1&format=json';
-
-
+const new_Image_Timer = 300;
+let connected_clients = 0;
+let winner = false;
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -37,7 +38,7 @@ let newImgCounter = setInterval(function() {
     counter--;
     console.log(counter);
     //console.log('Counter: ' + counter);
-    if (counter == 0) {
+    if (counter <= 0) {
         var max=(Object.keys(raw_data).length); // max location # + 1  
 		var random =Math.floor(Math.random() * (max)); 
 
@@ -60,7 +61,8 @@ let newImgCounter = setInterval(function() {
 				"hint" : hint_text
 			}
 			console.log(location);
-            counter = 30;
+            counter = new_Image_Timer;
+            winner = false;
             io.sockets.emit('location', {
                 "URL": location.URL,
                 "hint": location.hint        
@@ -76,15 +78,14 @@ let newImgCounter = setInterval(function() {
 
 // Chat Messaging
 io.sockets.on('connection', function(objectSocket) { 
-    console.log("Connection"); 
-    //also emit location
+    connected_clients++;
     io.sockets.emit('location', {
         "URL": location.URL,
         "hint": location.hint        
     });
     
     objectSocket.on('disconnect', function() {
-        console.log('Disconnected');
+        connected_clients--;
     });
     
     objectSocket.on('message', function(objectMessage) {
@@ -92,6 +93,19 @@ io.sockets.on('connection', function(objectSocket) {
             'name': objectMessage.name,
             'message': objectMessage.message,
         })
+        console.log(objectMessage.message);
+        console.log(location.name);
+        if ((objectMessage.message.toLowerCase().localeCompare(location.name.toLowerCase()) === 0 
+            || objectMessage.message.toLowerCase().localeCompare(location.alias.toLowerCase()) === 0) 
+            && winner === false) {
+
+            winner = true;
+            io.emit('message', {
+                'name': 'System',
+                'message': objectMessage.name + ' wins ' + counter + ' points!',
+            })
+            counter = 5;
+        }
     });
 });
 
@@ -113,10 +127,6 @@ app.use((req, res) => {
     res.redirect('/login');
     res.end();
 });
-
-
-
-
 
 
 
