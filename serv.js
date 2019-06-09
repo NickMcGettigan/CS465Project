@@ -106,7 +106,7 @@ io.sockets.on('connection', function(objectSocket) {
         };
         score_table.push(player);
         
-        objectSocket.emit('score', {
+        io.sockets.emit('score', {
             'table': build_table(score_table)
         });
     });
